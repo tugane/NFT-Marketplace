@@ -49,7 +49,7 @@ export const nfts: nft[] = [
   {
     id: 1,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0011.JPG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[0],
     author: "Author 1",
     owner: "Owner",
@@ -59,7 +59,7 @@ export const nfts: nft[] = [
   {
     id: 2,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0012.PNG"),
+    image: require("../assets/images/nft/IMG_0012.jpg"),
     category: categories[1],
     author: "Th-Author",
     owner: "The Owner",
@@ -69,7 +69,7 @@ export const nfts: nft[] = [
   {
     id: 3,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0013.PNG"),
+    image: require("../assets/images/nft/IMG_0013.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -79,7 +79,7 @@ export const nfts: nft[] = [
   {
     id: 4,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0014.JPG"),
+    image: require("../assets/images/nft/IMG_0014.jpg"),
     category: categories[1],
     author: "N_Author",
     owner: "Owner Name",
@@ -89,7 +89,7 @@ export const nfts: nft[] = [
   {
     id: 5,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0015.JPG"),
+    image: require("../assets/images/nft/IMG_0015.jpg"),
     category: categories[0],
     author: "N_Author",
     owner: "Owner Name",
@@ -99,7 +99,7 @@ export const nfts: nft[] = [
   {
     id: 6,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0016.JPG"),
+    image: require("../assets/images/nft/IMG_0016.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -109,7 +109,7 @@ export const nfts: nft[] = [
   {
     id: 7,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0017.PNG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -119,7 +119,7 @@ export const nfts: nft[] = [
   {
     id: 8,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0023.JPG"),
+    image: require("../assets/images/nft/IMG_0023.jpg"),
     category: categories[3],
     author: "N_Author",
     owner: "Owner Name",
@@ -129,7 +129,7 @@ export const nfts: nft[] = [
   {
     id: 9,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0024.JPG"),
+    image: require("../assets/images/nft/IMG_0024.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -139,7 +139,7 @@ export const nfts: nft[] = [
   {
     id: 11,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0011.JPG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[0],
     author: "Author 1",
     owner: "Owner",
@@ -149,7 +149,7 @@ export const nfts: nft[] = [
   {
     id: 12,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0012.PNG"),
+    image: require("../assets/images/nft/IMG_0012.jpg"),
     category: categories[1],
     author: "Th-Author",
     owner: "The Owner",
@@ -159,7 +159,7 @@ export const nfts: nft[] = [
   {
     id: 13,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0013.PNG"),
+    image: require("../assets/images/nft/IMG_0013.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -169,7 +169,7 @@ export const nfts: nft[] = [
   {
     id: 14,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0014.JPG"),
+    image: require("../assets/images/nft/IMG_0014.jpg"),
     category: categories[1],
     author: "N_Author",
     owner: "Owner Name",
@@ -179,7 +179,7 @@ export const nfts: nft[] = [
   {
     id: 15,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0015.JPG"),
+    image: require("../assets/images/nft/IMG_0015.jpg"),
     category: categories[0],
     author: "N_Author",
     owner: "Owner Name",
@@ -189,7 +189,7 @@ export const nfts: nft[] = [
   {
     id: 16,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0016.JPG"),
+    image: require("../assets/images/nft/IMG_0016.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -199,7 +199,7 @@ export const nfts: nft[] = [
   {
     id: 17,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0017.PNG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -209,7 +209,7 @@ export const nfts: nft[] = [
   {
     id: 18,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0023.JPG"),
+    image: require("../assets/images/nft/IMG_0023.jpg"),
     category: categories[3],
     author: "N_Author",
     owner: "Owner Name",
@@ -219,7 +219,7 @@ export const nfts: nft[] = [
   {
     id: 19,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0024.JPG"),
+    image: require("../assets/images/nft/IMG_0024.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -229,7 +229,7 @@ export const nfts: nft[] = [
   {
     id: 111,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0011.JPG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[0],
     author: "Author 1",
     owner: "Owner",
@@ -239,7 +239,7 @@ export const nfts: nft[] = [
   {
     id: 112,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0012.PNG"),
+    image: require("../assets/images/nft/IMG_0012.jpg"),
     category: categories[1],
     author: "Th-Author",
     owner: "The Owner",
@@ -249,7 +249,7 @@ export const nfts: nft[] = [
   {
     id: 113,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0013.PNG"),
+    image: require("../assets/images/nft/IMG_0013.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -259,7 +259,7 @@ export const nfts: nft[] = [
   {
     id: 114,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0014.JPG"),
+    image: require("../assets/images/nft/IMG_0014.jpg"),
     category: categories[1],
     author: "N_Author",
     owner: "Owner Name",
@@ -269,7 +269,7 @@ export const nfts: nft[] = [
   {
     id: 115,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0015.JPG"),
+    image: require("../assets/images/nft/IMG_0015.jpg"),
     category: categories[0],
     author: "N_Author",
     owner: "Owner Name",
@@ -279,7 +279,7 @@ export const nfts: nft[] = [
   {
     id: 116,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0016.JPG"),
+    image: require("../assets/images/nft/IMG_0016.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -289,7 +289,7 @@ export const nfts: nft[] = [
   {
     id: 117,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0017.PNG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -299,7 +299,7 @@ export const nfts: nft[] = [
   {
     id: 118,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0023.JPG"),
+    image: require("../assets/images/nft/IMG_0023.jpg"),
     category: categories[3],
     author: "N_Author",
     owner: "Owner Name",
@@ -309,7 +309,7 @@ export const nfts: nft[] = [
   {
     id: 119,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0024.JPG"),
+    image: require("../assets/images/nft/IMG_0024.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -319,7 +319,7 @@ export const nfts: nft[] = [
   {
     id: 21,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0011.JPG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[0],
     author: "Author 1",
     owner: "Owner",
@@ -329,7 +329,7 @@ export const nfts: nft[] = [
   {
     id: 22,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0012.PNG"),
+    image: require("../assets/images/nft/IMG_0012.jpg"),
     category: categories[1],
     author: "Th-Author",
     owner: "The Owner",
@@ -339,7 +339,7 @@ export const nfts: nft[] = [
   {
     id: 23,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0013.PNG"),
+    image: require("../assets/images/nft/IMG_0013.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -349,7 +349,7 @@ export const nfts: nft[] = [
   {
     id: 24,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0014.JPG"),
+    image: require("../assets/images/nft/IMG_0014.jpg"),
     category: categories[1],
     author: "N_Author",
     owner: "Owner Name",
@@ -359,7 +359,7 @@ export const nfts: nft[] = [
   {
     id: 25,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0015.JPG"),
+    image: require("../assets/images/nft/IMG_0015.jpg"),
     category: categories[0],
     author: "N_Author",
     owner: "Owner Name",
@@ -369,7 +369,7 @@ export const nfts: nft[] = [
   {
     id: 26,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0016.JPG"),
+    image: require("../assets/images/nft/IMG_0016.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -379,7 +379,7 @@ export const nfts: nft[] = [
   {
     id: 27,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0017.PNG"),
+    image: require("../assets/images/nft/IMG_0017.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -389,7 +389,7 @@ export const nfts: nft[] = [
   {
     id: 28,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0023.JPG"),
+    image: require("../assets/images/nft/IMG_0023.jpg"),
     category: categories[3],
     author: "N_Author",
     owner: "Owner Name",
@@ -399,7 +399,7 @@ export const nfts: nft[] = [
   {
     id: 29,
     name: "Teaser",
-    image: require("../assets/images/nft/IMG_0024.JPG"),
+    image: require("../assets/images/nft/IMG_0024.jpg"),
     category: categories[2],
     author: "N_Author",
     owner: "Owner Name",
@@ -408,14 +408,14 @@ export const nfts: nft[] = [
   },
 ];
 
-interface user {
+interface userInterface {
   id: number;
   name: string;
   image: string;
 }
 
-export const user: user = {
+export const user: userInterface = {
   id: 1,
-  name: "TOo",
+  name: "Too",
   image: require("../assets/images/user/avatar.png"),
 };
