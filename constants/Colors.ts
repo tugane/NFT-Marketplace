@@ -6,7 +6,7 @@ const yellow: string = "#FF9823";
 export default {
   text: dark,
   darkText: darkerLight,
-  background: light,
+  background: dark,
   secondary: yellow,
   onSecondary: light,
 };
