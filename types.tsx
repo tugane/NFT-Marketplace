@@ -4,6 +4,7 @@
  */
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { currency, nft } from "./data";
 
 declare global {
   namespace ReactNavigation {
@@ -13,7 +14,8 @@ declare global {
 
 export type RootStackParamList = {
   Home: undefined;
-  NotFound: undefined;
+  DetailScreen: { nft: nft };
+  MakeBidScreen: { image: string; currency: currency };
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

@@ -22,7 +22,13 @@ export const categories: category[] = [
   },
 ];
 
-interface nft {
+export interface currency {
+  id: number;
+  name: string;
+  image: string;
+}
+
+export interface nft {
   id: number;
   name: string;
   image: string;
@@ -30,8 +36,14 @@ interface nft {
   author: string;
   owner: string;
   hightest_bid: number;
-  currency: string;
+  currency: currency;
 }
+
+const eth: currency = {
+  id: 1,
+  name: "ETH",
+  image: require("../assets/images/currency/eth.png"),
+};
 
 export const nfts: nft[] = [
   {
@@ -42,7 +54,7 @@ export const nfts: nft[] = [
     author: "Author 1",
     owner: "Owner",
     hightest_bid: 100,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 2,
@@ -52,7 +64,7 @@ export const nfts: nft[] = [
     author: "Th-Author",
     owner: "The Owner",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 3,
@@ -62,7 +74,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 4,
@@ -72,7 +84,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 5,
@@ -82,7 +94,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 6,
@@ -92,7 +104,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 7,
@@ -102,7 +114,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 8,
@@ -112,7 +124,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 9,
@@ -122,7 +134,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 11,
@@ -132,7 +144,7 @@ export const nfts: nft[] = [
     author: "Author 1",
     owner: "Owner",
     hightest_bid: 100,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 12,
@@ -142,7 +154,7 @@ export const nfts: nft[] = [
     author: "Th-Author",
     owner: "The Owner",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 13,
@@ -152,7 +164,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 14,
@@ -162,7 +174,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 15,
@@ -172,7 +184,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 16,
@@ -182,7 +194,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 17,
@@ -192,7 +204,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 18,
@@ -202,7 +214,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 19,
@@ -212,7 +224,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 111,
@@ -222,7 +234,7 @@ export const nfts: nft[] = [
     author: "Author 1",
     owner: "Owner",
     hightest_bid: 100,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 112,
@@ -232,7 +244,7 @@ export const nfts: nft[] = [
     author: "Th-Author",
     owner: "The Owner",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 113,
@@ -242,7 +254,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 114,
@@ -252,7 +264,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 115,
@@ -262,7 +274,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 116,
@@ -272,7 +284,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 117,
@@ -282,7 +294,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 118,
@@ -292,7 +304,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 119,
@@ -302,7 +314,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 21,
@@ -312,7 +324,7 @@ export const nfts: nft[] = [
     author: "Author 1",
     owner: "Owner",
     hightest_bid: 100,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 22,
@@ -322,7 +334,7 @@ export const nfts: nft[] = [
     author: "Th-Author",
     owner: "The Owner",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 23,
@@ -332,7 +344,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 24,
@@ -342,7 +354,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 25,
@@ -352,7 +364,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 26,
@@ -362,7 +374,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 27,
@@ -372,7 +384,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 28,
@@ -382,7 +394,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
   {
     id: 29,
@@ -392,7 +404,7 @@ export const nfts: nft[] = [
     author: "N_Author",
     owner: "Owner Name",
     hightest_bid: 200,
-    currency: "ETH",
+    currency: eth,
   },
 ];
 
