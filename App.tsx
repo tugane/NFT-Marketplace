@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
+import { ColorSchemeName } from "react-native";
 import useCachedResources from "./hooks/useCachedResources";
-import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
+import { useState } from "react";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+  const [colorScheme, setColorScheme] = useState<ColorSchemeName>("dark");
 
   if (!isLoadingComplete) {
     return null;
