@@ -1,12 +1,14 @@
 const dark: string = "#1B1E28";
 const light: string = "#FFFFFF";
-const darkerLight: string = "#9CA0A6";
+const gray: string = "#9CA0A6";
 const yellow: string = "#FF9823";
 
 export default {
   text: light,
-  darkText: darkerLight,
+  lightText: gray,
+  darkText: dark,
   background: dark,
+  lightBackground: light,
   secondary: yellow,
   onSecondary: light,
 };
