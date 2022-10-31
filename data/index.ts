@@ -1,9 +1,11 @@
-interface category {
+import { ImageSourcePropType } from "react-native";
+
+export interface categoryInterface {
   id: number;
   name: string;
 }
 
-export const categories: category[] = [
+export const categories: categoryInterface[] = [
   {
     id: 1,
     name: "Recent",
@@ -28,11 +30,11 @@ export interface currency {
   image: string;
 }
 
-export interface nft {
+export interface nftInterface {
   id: number;
   name: string;
-  image: string;
-  category: category;
+  image: ImageSourcePropType;
+  category: categoryInterface;
   author: string;
   owner: string;
   hightest_bid: number;
@@ -45,7 +47,7 @@ const eth: currency = {
   image: require("../assets/images/currency/eth.png"),
 };
 
-export const nfts: nft[] = [
+export const nfts: nftInterface[] = [
   {
     id: 1,
     name: "Teaser",
@@ -408,10 +410,49 @@ export const nfts: nft[] = [
   },
 ];
 
+export interface collectionInterface {
+  id: number;
+  name: string;
+  nfts: nftInterface[];
+  category: categoryInterface;
+  author: string;
+}
+
+export const collection: collectionInterface[] = [
+  {
+    id: 1,
+    name: "Teaser",
+    nfts: nfts.splice(2, 4),
+    category: categories[0],
+    author: "Matt_Sypien",
+  },
+  {
+    id: 2,
+    name: "Teaser 2",
+    nfts: nfts.splice(5, 8),
+    category: categories[1],
+    author: "Matt_Sypien",
+  },
+  {
+    id: 3,
+    name: "Teaser 3",
+    nfts: nfts.splice(7, 10),
+    category: categories[2],
+    author: "Matt_Sypien",
+  },
+  {
+    id: 4,
+    name: "Teaser 4",
+    nfts: nfts.splice(6, 10),
+    category: categories[3],
+    author: "Matt_Sypien",
+  },
+];
+
 interface userInterface {
   id: number;
   name: string;
-  image: string;
+  image: ImageSourcePropType;
 }
 
 export const user: userInterface = {
