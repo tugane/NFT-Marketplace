@@ -1,5 +1,6 @@
 import {
   Image,
+  ImageBackground,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -8,22 +9,28 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { RootStackScreenProps } from "../types";
-import { ImageBackground } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
 import { BlurView } from "expo-blur";
-import { user } from "../data";
 import Spacing from "../constants/Spacing";
-import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
+import { user } from "../data";
 import Font from "../constants/Font";
+
+type MakeBidScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  "MakeBidScreen"
+>;
 
 const BUTTON_SIZE = Spacing * 7;
 
-const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
-  route,
+const MakeBidScreen: React.FC<MakeBidScreenProps> = ({
   navigation: { goBack },
+  route: {
+    params: { image, currency },
+  },
 }) => {
-  const { currency, image } = route.params;
   return (
     <ImageBackground
       source={image}
@@ -37,11 +44,7 @@ const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
           flex: 1,
         }}
       >
-        <SafeAreaView
-          style={{
-            flex: 1,
-          }}
-        >
+        <SafeAreaView>
           <View
             style={{
               flexDirection: "row",
@@ -49,7 +52,12 @@ const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
               paddingHorizontal: Spacing * 2,
             }}
           >
-            <View style={{ flexDirection: "row", position: "relative" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
               <TouchableOpacity
                 style={{
                   position: "absolute",
@@ -58,6 +66,8 @@ const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
                 onPress={() => goBack()}
               >
                 <BlurView
+                  tint="light"
+                  intensity={80}
                   style={{
                     height: BUTTON_SIZE,
                     width: BUTTON_SIZE,
@@ -66,49 +76,66 @@ const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
                     justifyContent: "center",
                     alignItems: "center",
                   }}
-                  tint="light"
-                  intensity={70}
                 >
                   <Ionicons
-                    name="close"
                     size={Spacing * 4}
-                    color={Colors.light}
+                    name="close"
+                    color={Colors.text}
                   />
                 </BlurView>
               </TouchableOpacity>
-              <Image
-                source={image}
+              <View
                 style={{
-                  marginLeft: BUTTON_SIZE - Spacing * 2,
-                  width: BUTTON_SIZE,
                   height: BUTTON_SIZE,
+                  width: BUTTON_SIZE,
                   borderRadius: BUTTON_SIZE / 2,
+                  overflow: "hidden",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: Colors.light,
+                  marginLeft: BUTTON_SIZE - Spacing * 2,
                 }}
-              />
+              >
+                <Image
+                  source={image}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+              </View>
             </View>
-            <TouchableOpacity>
+
+            <View
+              style={{
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: BUTTON_SIZE / 2,
+                overflow: "hidden",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: Colors.light,
+              }}
+            >
               <Image
                 source={user.image}
                 style={{
-                  width: BUTTON_SIZE,
-                  height: BUTTON_SIZE,
-                  borderRadius: BUTTON_SIZE / 2,
+                  height: "100%",
+                  width: "100%",
                 }}
               />
-            </TouchableOpacity>
+            </View>
           </View>
-
           <View
             style={{
               paddingHorizontal: Spacing * 2,
-              paddingVertical: Spacing * 4,
-              flex: 1,
+              marginVertical: Spacing * 4,
             }}
           >
             <Text
               style={{
-                fontSize: Spacing * 4.5,
-                color: Colors.light,
+                color: Colors.text,
+                fontSize: Spacing * 5,
                 fontFamily: Font.gilroyBold,
               }}
             >
@@ -116,74 +143,79 @@ const MakeBidScreen: React.FC<RootStackScreenProps<"MakeBidScreen">> = ({
             </Text>
             <Text
               style={{
-                fontSize: Spacing * 4.5,
-                color: Colors.light,
+                color: Colors.text,
+                fontSize: Spacing * 5,
                 fontFamily: Font.gilroyBold,
               }}
             >
               collection bid
             </Text>
 
-            <BlurView
+            <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: Spacing,
-                borderRadius: Spacing * 5,
-                overflow: "hidden",
-                marginVertical: Spacing * 3,
+                marginVertical: Spacing * 4,
               }}
-              intensity={70}
-              tint="light"
             >
-              <View
+              <BlurView
+                tint="light"
                 style={{
-                  height: BUTTON_SIZE,
-                  width: BUTTON_SIZE,
                   padding: Spacing,
-                  borderRadius: BUTTON_SIZE / 2,
-                  overflow: "hidden",
-                  justifyContent: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                   alignItems: "center",
-                  backgroundColor: Colors.light,
+                  borderRadius: Spacing * 5,
+                  overflow: "hidden",
                 }}
               >
-                <Image
-                  style={{ height: "70%", width: "70%" }}
-                  resizeMode="contain"
-                  source={currency.image}
+                <View
+                  style={{
+                    height: BUTTON_SIZE,
+                    width: BUTTON_SIZE,
+                    borderRadius: BUTTON_SIZE / 2,
+                    overflow: "hidden",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: Colors.light,
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                    }}
+                    resizeMode="contain"
+                    source={currency.image}
+                  />
+                </View>
+                <TextInput
+                  keyboardType="numeric"
+                  style={{
+                    flex: 1,
+                    paddingHorizontal: Spacing * 2,
+                    fontSize: Spacing * 5,
+                    color: Colors.text,
+                    fontFamily: Font.gilroyBold,
+                  }}
                 />
-              </View>
-              <TextInput
-                keyboardType="numeric"
-                style={{
-                  fontSize: Spacing * 5,
-                  color: Colors.text,
-                  fontFamily: Font.gilroyBold,
-                  paddingHorizontal: Spacing * 3,
-                  flex: 1,
-                }}
-              />
-            </BlurView>
+              </BlurView>
+            </View>
             <TouchableOpacity
               style={{
                 backgroundColor: Colors.light,
-                paddingHorizontal: Spacing * 4,
-                paddingVertical: Spacing * 3,
+                padding: Spacing * 3,
+                borderRadius: Spacing * 5,
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: Spacing * 5,
               }}
             >
               <Text
                 style={{
                   fontSize: Spacing * 2,
                   color: Colors.darkText,
-                  fontFamily: Font.gilroyBold,
+                  fontFamily: Font.gilroyMedium,
                 }}
               >
-                Make bid
+                Make Bid
               </Text>
             </TouchableOpacity>
           </View>
