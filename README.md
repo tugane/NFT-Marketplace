@@ -5,7 +5,7 @@ React Native NFT Marketplace App
 
 ## Step1
 
-install dev dependences
+install dev dependencies
 
 ### `npm install`
 
