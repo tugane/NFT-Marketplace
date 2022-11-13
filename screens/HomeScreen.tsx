@@ -44,7 +44,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
         (collection) => collection.category.id === activeCategory?.id
       )
     );
-  }, [activeCategory]);
+  }, [activeCategory?.id]);
 
   useEffect(() => {
     setActiveCategory(categories[0]);
