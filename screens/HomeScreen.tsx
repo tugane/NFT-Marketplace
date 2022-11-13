@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   Image,
   SafeAreaView,
   ScrollView,
@@ -20,11 +19,10 @@ import {
 } from "../data";
 import Font from "../constants/Font";
 import { BlurView } from "expo-blur";
+import Layout from "../constants/Layout";
 
-const { width, height } = Dimensions.get("window");
-
-const NFT_CARD_HEIGHT = Spacing * 50;
-const NFT_CARD_WIDTH = width - Spacing * 2;
+const NFT_CARD_HEIGHT = Spacing * 48;
+const NFT_CARD_WIDTH = Layout.window.width - Spacing * 4;
 
 const HomeScreen: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<
@@ -72,22 +70,25 @@ const HomeScreen: React.FC = () => {
         >
           {user.name}
         </Text>
-        <Image
-          source={user.image}
-          style={{
-            width: Spacing * 4,
-            height: Spacing * 4,
-            borderRadius: Spacing * 2,
-          }}
-        />
+        <TouchableOpacity>
+          <Image
+            source={user.image}
+            style={{
+              width: Spacing * 4,
+              height: Spacing * 4,
+              borderRadius: Spacing * 2,
+            }}
+          />
+        </TouchableOpacity>
       </View>
       <ScrollView
         horizontal
+        showsHorizontalScrollIndicator={false}
         style={{
           backgroundColor: Colors.lightBackground,
+          paddingRight: Spacing * 10,
         }}
         contentContainerStyle={{
-          width: width,
           paddingVertical: Spacing * 2,
           flexDirection: "row",
           alignItems: "center",
@@ -159,18 +160,12 @@ const HomeScreen: React.FC = () => {
           />
         </View>
       </View>
-      <View
-        style={{
-          marginVertical: Spacing * 2,
-          position: "relative",
-        }}
-      >
+      <View>
         {collectionList.map((collection) => (
           <View
             style={{
               paddingHorizontal: Spacing * 2,
               position: "relative",
-              justifyContent: "center",
               alignItems: "center",
             }}
             key={collection.id}
@@ -180,10 +175,9 @@ const HomeScreen: React.FC = () => {
                 key={nft.id}
                 style={{
                   zIndex: Spacing - index,
-                  width: NFT_CARD_WIDTH - index * Spacing,
+                  width: NFT_CARD_WIDTH,
                   height: NFT_CARD_HEIGHT,
                   position: "absolute",
-                  top: index * Spacing * 1.2,
                   shadowColor: "#000000",
                   shadowOffset: {
                     width: 0,
@@ -191,6 +185,12 @@ const HomeScreen: React.FC = () => {
                   },
                   shadowOpacity: 0.4,
                   shadowRadius: 3.3,
+                  transform: [
+                    {
+                      translateY: index * 10,
+                    },
+                    { scaleX: 1 - index / 10 },
+                  ],
                 }}
               >
                 <Image
