@@ -348,7 +348,7 @@ export interface collectionInterface {
   hightest_bid: number;
 }
 
-export const collection: collectionInterface[] = [
+export const collections: collectionInterface[] = [
   {
     id: 1,
     name: "Teaser",
