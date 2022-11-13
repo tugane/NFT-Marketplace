@@ -7,21 +7,28 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { RootStackScreenProps } from "../types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
 import Layout from "../constants/Layout";
-import Spacing from "../constants/Spacing";
-import { BlurView } from "expo-blur";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { BlurView } from "expo-blur";
+
 import Colors from "../constants/Colors";
+import Spacing from "../constants/Spacing";
 import Font from "../constants/Font";
 
-const IMAGE_HEIGHT = Layout.window.height / 1.4;
-const BUTTON_SIZE = Spacing * 7;
+type DetailScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  "DetailScreen"
+>;
 
-const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
-  route,
+const BUTTON_SIZE = Spacing * 7;
+const IMAGE_HEIGHT = Layout.window.height / 1.4;
+
+const DetailScreen: React.FC<DetailScreenProps> = ({
   navigation: { goBack, navigate },
+  route,
 }) => {
   const collection = route.params.collection;
 
@@ -29,12 +36,12 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
     <>
       <ImageBackground
         source={collection.image}
-        imageStyle={{
-          borderBottomLeftRadius: Spacing * 3,
-          borderBottomRightRadius: Spacing * 3,
-        }}
         style={{
           height: IMAGE_HEIGHT,
+          width: "100%",
+          borderBottomLeftRadius: Spacing * 3,
+          borderBottomRightRadius: Spacing * 3,
+          overflow: "hidden",
         }}
       >
         <SafeAreaView
@@ -45,8 +52,8 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
         >
           <View
             style={{
+              paddingHorizontal: Spacing * 2,
               flexDirection: "row",
-              padding: Spacing * 2,
               justifyContent: "space-between",
             }}
           >
@@ -60,13 +67,11 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                tint="light"
-                intensity={70}
               >
                 <Ionicons
-                  name="chevron-back"
                   size={Spacing * 4}
-                  color={Colors.light}
+                  name="chevron-back"
+                  color={Colors.text}
                 />
               </BlurView>
             </TouchableOpacity>
@@ -82,9 +87,11 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
               }}
             >
               <Ionicons
-                style={{ marginTop: Spacing / 2.5 }}
+                style={{
+                  marginTop: Spacing / 2,
+                }}
+                size={Spacing * 4}
                 name="heart-outline"
-                size={Spacing * 3}
                 color={Colors.secondary}
               />
             </TouchableOpacity>
@@ -94,24 +101,24 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
               paddingHorizontal: Spacing * 2,
               flexDirection: "row",
               justifyContent: "space-between",
-              bottom: Spacing * 4,
+              bottom: Spacing * 5,
             }}
           >
             <View>
               <Text
                 style={{
-                  fontSize: Spacing * 4.5,
-                  color: Colors.light,
+                  color: Colors.text,
                   fontFamily: Font.gilroyBold,
+                  fontSize: Spacing * 5,
                 }}
               >
                 {collection.name}
               </Text>
               <Text
                 style={{
-                  fontSize: Spacing * 2,
-                  color: Colors.light,
+                  color: Colors.text,
                   fontFamily: Font.gilroyMedium,
+                  fontSize: Spacing * 2,
                 }}
               >
                 {collection.handle}
@@ -123,7 +130,6 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
               style={{
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
-                padding: Spacing,
                 borderRadius: BUTTON_SIZE / 2,
                 overflow: "hidden",
                 justifyContent: "center",
@@ -131,7 +137,10 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
               }}
             >
               <Image
-                style={{ height: "70%", width: "70%" }}
+                style={{
+                  width: "50%",
+                  height: "50%",
+                }}
                 resizeMode="contain"
                 source={collection.currency.image}
               />
@@ -139,21 +148,18 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
           </View>
         </SafeAreaView>
       </ImageBackground>
+
       <View
         style={{
-          padding: Spacing * 2,
+          paddingHorizontal: Spacing * 2,
+          paddingVertical: Spacing * 3,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            marginBottom: Spacing,
-          }}
-        >
+        <View style={{ flexDirection: "row" }}>
           <Text
             style={{
-              fontSize: Spacing * 2.5,
-              color: Colors.light,
+              color: Colors.text,
+              fontSize: Spacing * 3,
               fontFamily: Font.gilroyLight,
             }}
           >
@@ -161,10 +167,10 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
           </Text>
           <Text
             style={{
-              fontSize: Spacing * 2.5,
-              color: Colors.light,
+              color: Colors.text,
               fontFamily: Font.gilroyBold,
               marginLeft: Spacing / 2,
+              fontSize: Spacing * 3,
             }}
           >
             {collection.author}
@@ -172,96 +178,102 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
         </View>
         <Text
           style={{
-            fontSize: Spacing * 1.7,
-            color: Colors.light,
+            color: Colors.text,
+            fontSize: Spacing * 2,
             fontFamily: Font.gilroyLight,
+            marginTop: Spacing,
           }}
         >
-          Highest bid: {collection.hightest_bid} {collection.currency.name}
+          Highest Bid: {collection.hightest_bid}
         </Text>
-      </View>
-      <TouchableOpacity
-        onPress={() =>
-          navigate("MakeBidScreen", {
-            image: collection.image,
-            currency: collection.currency,
-          })
-        }
-      >
-        <BlurView
+
+        <TouchableOpacity
+          onPress={() =>
+            navigate("MakeBidScreen", {
+              image: collection.image,
+              currency: collection.currency,
+            })
+          }
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginHorizontal: Spacing * 2,
-            padding: Spacing,
-            borderRadius: Spacing * 5,
-            overflow: "hidden",
+            marginTop: Spacing * 4,
           }}
         >
-          <View
+          <BlurView
             style={{
-              height: BUTTON_SIZE,
-              width: BUTTON_SIZE,
               padding: Spacing,
-              borderRadius: BUTTON_SIZE / 2,
-              overflow: "hidden",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: Colors.light,
-            }}
-          >
-            <Image
-              style={{ height: "70%", width: "70%" }}
-              resizeMode="contain"
-              source={collection.currency.image}
-            />
-          </View>
-          <Text
-            style={{
-              color: Colors.light,
-              fontFamily: Font.gilroyBold,
-              fontSize: Spacing * 1.6,
-            }}
-          >
-            Make Collection Bid
-          </Text>
-          <View
-            style={{
               flexDirection: "row",
-              width: Spacing * 7,
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderRadius: Spacing * 5,
+              overflow: "hidden",
             }}
           >
-            <Ionicons
-              color={Colors.light}
-              name="chevron-forward"
-              size={Spacing * 3}
+            <BlurView
+              tint="light"
+              intensity={70}
               style={{
-                marginHorizontal: -Spacing / 1.2,
-                opacity: 0.4,
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: BUTTON_SIZE / 2,
+                overflow: "hidden",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
-            <Ionicons
-              color={Colors.light}
-              name="chevron-forward"
-              size={Spacing * 3}
+            >
+              <Image
+                style={{
+                  width: "50%",
+                  height: "50%",
+                }}
+                resizeMode="contain"
+                source={collection.currency.image}
+              />
+            </BlurView>
+            <Text
               style={{
-                marginHorizontal: -Spacing / 1.2,
-                opacity: 0.8,
+                fontFamily: Font.gilroyMedium,
+                color: Colors.text,
+                fontSize: Spacing * 1.6,
               }}
-            />
-            <Ionicons
-              color={Colors.light}
-              name="chevron-forward"
-              size={Spacing * 3}
+            >
+              Make Collection Bid
+            </Text>
+            <View
               style={{
-                marginHorizontal: -Spacing / 1.2,
-                opacity: 1,
+                flexDirection: "row",
+                width: Spacing * 7,
               }}
-            />
-          </View>
-        </BlurView>
-      </TouchableOpacity>
+            >
+              <Ionicons
+                name="chevron-forward"
+                size={Spacing * 4}
+                color={Colors.text}
+                style={{
+                  marginLeft: -Spacing * 2,
+                  opacity: 0.2,
+                }}
+              />
+              <Ionicons
+                name="chevron-forward"
+                size={Spacing * 4}
+                color={Colors.text}
+                style={{
+                  marginLeft: -Spacing * 2,
+                  opacity: 0.6,
+                }}
+              />
+              <Ionicons
+                name="chevron-forward"
+                size={Spacing * 4}
+                color={Colors.text}
+                style={{
+                  marginLeft: -Spacing * 2,
+                }}
+              />
+            </View>
+          </BlurView>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
