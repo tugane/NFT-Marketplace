@@ -20,11 +20,17 @@ import {
 import Font from "../constants/Font";
 import { BlurView } from "expo-blur";
 import Layout from "../constants/Layout";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
 
 const NFT_CARD_HEIGHT = Spacing * 48;
 const NFT_CARD_WIDTH = Layout.window.width - Spacing * 4;
 
-const HomeScreen: React.FC = () => {
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
+
+const HomeScreen: React.FC<HomeScreenProps> = ({
+  navigation: { navigate },
+}) => {
   const [activeCategory, setActiveCategory] = useState<
     categoryInterface | undefined
   >(undefined);
@@ -249,6 +255,9 @@ const HomeScreen: React.FC = () => {
                   </Text>
                 </View>
                 <TouchableOpacity
+                  onPress={() =>
+                    navigate("DetailScreen", { collection: collection })
+                  }
                   style={{
                     backgroundColor: Colors.secondary,
                     padding: Spacing,
