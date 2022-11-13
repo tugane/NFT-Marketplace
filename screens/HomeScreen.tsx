@@ -22,12 +22,18 @@ import {
 import Font from "../constants/Font";
 import Layout from "../constants/Layout";
 import { BlurView } from "expo-blur";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
 
 const SIZE = Spacing * 6;
 const NFT_HEIGHT = Spacing * 45;
 const NFT_WIDTH = Layout.window.width - Spacing * 4;
 
-const HomeScreen = () => {
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
+
+const HomeScreen: React.FC<HomeScreenProps> = ({
+  navigation: { navigate },
+}) => {
   const [activeCategory, setActiveCategory] = useState<
     categoryInterface | undefined
   >(undefined);
@@ -244,6 +250,9 @@ const HomeScreen = () => {
                         </Text>
                       </View>
                       <TouchableOpacity
+                        onPress={() =>
+                          navigate("DetailScreen", { collection: collection })
+                        }
                         style={{
                           padding: Spacing * 2.5,
                           backgroundColor: Colors.secondary,
