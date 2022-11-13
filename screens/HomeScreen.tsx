@@ -1,5 +1,6 @@
 import {
   Image,
+  ImageBackground,
   SafeAreaView,
   ScrollView,
   Text,
@@ -7,40 +8,37 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Spacing from "../constants/Spacing";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+
 import Colors from "../constants/Colors";
+import Spacing from "../constants/Spacing";
 import {
   categories,
   categoryInterface,
-  collection,
   collectionInterface,
+  collections,
   user,
 } from "../data";
 import Font from "../constants/Font";
-import { BlurView } from "expo-blur";
 import Layout from "../constants/Layout";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../types";
+import { BlurView } from "expo-blur";
 
-const NFT_CARD_HEIGHT = Spacing * 48;
-const NFT_CARD_WIDTH = Layout.window.width - Spacing * 4;
+const SIZE = Spacing * 6;
+const NFT_HEIGHT = Spacing * 45;
+const NFT_WIDTH = Layout.window.width - Spacing * 4;
 
-type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
-
-const HomeScreen: React.FC<HomeScreenProps> = ({
-  navigation: { navigate },
-}) => {
+const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState<
     categoryInterface | undefined
   >(undefined);
+
   const [collectionList, setCollectionList] = useState<collectionInterface[]>(
     []
   );
 
   useEffect(() => {
     setCollectionList(
-      collection.filter(
+      collections.filter(
         (collection) => collection.category.id === activeCategory?.id
       )
     );
@@ -51,238 +49,228 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   }, []);
 
   return (
-    <SafeAreaView>
-      <View
-        style={{
-          padding: Spacing * 2,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity>
-          <MaterialCommunityIcons
-            name="dots-grid"
-            size={Spacing * 4}
-            color={Colors.text}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: Spacing * 2,
-            color: Colors.text,
-            fontFamily: Font.gilroyBold,
-          }}
-        >
-          {user.name}
-        </Text>
-        <TouchableOpacity>
-          <Image
-            source={user.image}
-            style={{
-              width: Spacing * 4,
-              height: Spacing * 4,
-              borderRadius: Spacing * 2,
-            }}
-          />
-        </TouchableOpacity>
-      </View>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{
-          backgroundColor: Colors.lightBackground,
-          paddingRight: Spacing * 10,
-        }}
-        contentContainerStyle={{
-          paddingVertical: Spacing * 2,
-          flexDirection: "row",
-          alignItems: "center",
-          paddingRight: Spacing * 5,
-        }}
-      >
-        {categories.map((category) => (
-          <TouchableOpacity
-            onPress={() => setActiveCategory(category)}
-            style={{ marginHorizontal: Spacing * 2 }}
-            key={category.id}
-          >
-            <Text
-              style={[
-                {
-                  fontSize: Spacing * 2,
-                  color: Colors.lightText,
-                  fontFamily: Font.gilroyRegular,
-                },
-
-                activeCategory?.id === category.id && {
-                  color: Colors.darkText,
-                  fontFamily: Font.gilroyBold,
-                  fontSize: Spacing * 3,
-                },
-              ]}
-            >
-              {category.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: Spacing * 2,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: Spacing * 2,
-            color: Colors.text,
-            fontFamily: Font.gilroyMedium,
-          }}
-        >
-          {activeCategory?.name} collections
-        </Text>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SafeAreaView>
         <View
           style={{
+            paddingHorizontal: Spacing * 2,
             flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity>
+            <MaterialCommunityIcons
+              name="dots-grid"
+              color={Colors.text}
+              size={Spacing * 4}
+            />
+          </TouchableOpacity>
+          <Text
+            style={{
+              color: Colors.text,
+              fontSize: Spacing * 2,
+              fontFamily: Font.gilroyBold,
+            }}
+          >
+            Hey {user.name}
+          </Text>
+          <TouchableOpacity
+            style={{
+              height: SIZE,
+              width: SIZE,
+              overflow: "hidden",
+              borderRadius: SIZE / 2,
+            }}
+          >
+            <Image
+              source={user.image}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: Colors.lightBackground,
+            marginVertical: Spacing * 3,
+          }}
+        >
+          <ScrollView
+            style={{
+              paddingVertical: Spacing * 2,
+            }}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          >
+            {categories.map((category) => (
+              <TouchableOpacity
+                onPress={() => setActiveCategory(category)}
+                style={{
+                  paddingHorizontal: Spacing * 3,
+                }}
+                key={category.id}
+              >
+                <Text
+                  style={[
+                    {
+                      fontSize: Spacing * 2,
+                      color: Colors.lightText,
+                      fontFamily: Font.gilroyMedium,
+                    },
+                    activeCategory?.id === category.id && {
+                      fontFamily: Font.gilroyBold,
+                      color: Colors.darkText,
+                    },
+                  ]}
+                >
+                  {category.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+        <View
+          style={{
+            paddingHorizontal: Spacing * 2,
+            paddingVertical: Spacing * 2,
+            flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           <Text
             style={{
-              fontSize: Spacing * 1.7,
-              color: Colors.lightText,
-              fontFamily: Font.gilroyRegular,
+              fontSize: Spacing * 2,
+              color: Colors.text,
+              fontFamily: Font.gilroyMedium,
             }}
           >
-            The week
+            {activeCategory?.name} collections
           </Text>
-          <MaterialCommunityIcons
-            name="chevron-down"
-            color={Colors.lightText}
-            size={Spacing * 3}
-          />
-        </View>
-      </View>
-      <View>
-        {collectionList.map((collection) => (
-          <View
+          <TouchableOpacity
             style={{
-              paddingHorizontal: Spacing * 2,
-              position: "relative",
+              flexDirection: "row",
               alignItems: "center",
             }}
-            key={collection.id}
           >
-            {collection.nfts.map((nft, index) => (
-              <View
-                key={nft.id}
-                style={{
-                  zIndex: Spacing - index,
-                  width: NFT_CARD_WIDTH,
-                  height: NFT_CARD_HEIGHT,
-                  position: "absolute",
-                  shadowColor: "#000000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 8,
-                  },
-                  shadowOpacity: 0.4,
-                  shadowRadius: 3.3,
-                  transform: [
-                    {
-                      translateY: index * 10,
-                    },
-                    { scaleX: 1 - index / 10 },
-                  ],
-                }}
-              >
-                <Image
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: Spacing * 3,
-                  }}
-                  source={nft.image}
-                />
-              </View>
-            ))}
-            <View
+            <Text
               style={{
-                position: "absolute",
-                zIndex: Spacing,
-                top: NFT_CARD_HEIGHT - Spacing * 10,
-                width: NFT_CARD_WIDTH - Spacing * 3,
-                borderRadius: Spacing * 2,
-                overflow: "hidden",
+                color: Colors.lightText,
+                fontSize: Spacing * 1.6,
               }}
             >
-              <BlurView
-                intensity={40}
-                tint="dark"
-                style={{
-                  padding: Spacing / 2,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <View
+              The Week
+            </Text>
+            <Ionicons
+              name="chevron-down"
+              size={Spacing * 3}
+              color={Colors.lightText}
+            />
+          </TouchableOpacity>
+        </View>
+        <View>
+          {collectionList.map((collection) => (
+            <View
+              key={collection.id}
+              style={{
+                position: "relative",
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              {collection.nfts.map((nft, index) => (
+                <ImageBackground
                   style={{
-                    padding: Spacing,
-                    justifyContent: "space-between",
+                    height: NFT_HEIGHT,
+                    width: NFT_WIDTH,
+                    position: "absolute",
+                    zIndex: Spacing - index,
+                    transform: [
+                      {
+                        translateY: index * 10,
+                      },
+                      {
+                        scaleX: 1 - index / 10,
+                      },
+                    ],
+                    borderRadius: Spacing * 3,
+                    overflow: "hidden",
+                    justifyContent: "flex-end",
                   }}
+                  key={nft.id}
+                  source={nft.image}
                 >
-                  <Text
-                    style={{
-                      fontSize: Spacing * 2,
-                      color: Colors.text,
-                      fontFamily: Font.gilroyBold,
-                    }}
-                  >
-                    {collection.name}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: Spacing * 1.5,
-                      color: Colors.text,
-                      fontFamily: Font.gilroyLight,
-                      marginTop: Spacing / 2,
-                    }}
-                  >
-                    @ {collection.author}
-                  </Text>
-                </View>
-                <TouchableOpacity
-                  onPress={() =>
-                    navigate("DetailScreen", { collection: collection })
-                  }
-                  style={{
-                    backgroundColor: Colors.secondary,
-                    padding: Spacing,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: Spacing * 2,
-                    paddingHorizontal: Spacing * 2,
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: Spacing * 2,
-                      color: Colors.text,
-                      fontFamily: Font.gilroyBold,
-                    }}
-                  >
-                    View Collection
-                  </Text>
-                </TouchableOpacity>
-              </BlurView>
+                  {index === 0 && (
+                    <BlurView
+                      tint="dark"
+                      intensity={30}
+                      style={{
+                        bottom: Spacing * 3,
+                        marginHorizontal: Spacing * 2,
+                        borderRadius: Spacing * 3,
+                        overflow: "hidden",
+                        padding: Spacing / 2,
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <View
+                        style={{
+                          paddingHorizontal: Spacing,
+                          paddingVertical: Spacing,
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: Colors.text,
+                            fontFamily: Font.gilroyBold,
+                            fontSize: Spacing * 3,
+                          }}
+                        >
+                          {collection.name}
+                        </Text>
+                        <Text
+                          style={{
+                            color: Colors.text,
+                            fontFamily: Font.gilroyLight,
+                            fontSize: Spacing * 1.7,
+                          }}
+                        >
+                          {collection.handle}
+                        </Text>
+                      </View>
+                      <TouchableOpacity
+                        style={{
+                          padding: Spacing * 2.5,
+                          backgroundColor: Colors.secondary,
+                          borderRadius: Spacing * 3,
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontFamily: Font.gilroyBold,
+                            color: Colors.text,
+                            fontSize: Spacing * 1.7,
+                          }}
+                        >
+                          View Collection
+                        </Text>
+                      </TouchableOpacity>
+                    </BlurView>
+                  )}
+                </ImageBackground>
+              ))}
             </View>
-          </View>
-        ))}
-      </View>
-    </SafeAreaView>
+          ))}
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
