@@ -4,6 +4,7 @@
  */
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { ImageSourcePropType } from "react-native";
 import { collectionInterface, currency } from "./data";
 
 declare global {
@@ -15,7 +16,7 @@ declare global {
 export type RootStackParamList = {
   Home: undefined;
   DetailScreen: { collection: collectionInterface };
-  MakeBidScreen: { image: string; currency: currency };
+  MakeBidScreen: { image: ImageSourcePropType; currency: currency };
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

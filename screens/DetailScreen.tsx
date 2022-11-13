@@ -21,7 +21,7 @@ const BUTTON_SIZE = Spacing * 7;
 
 const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
   route,
-  navigation: { goBack },
+  navigation: { goBack, navigate },
 }) => {
   const collection = route.params.collection;
 
@@ -180,7 +180,14 @@ const DetailScreen: React.FC<RootStackScreenProps<"DetailScreen">> = ({
           Highest bid: {collection.hightest_bid} {collection.currency.name}
         </Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigate("MakeBidScreen", {
+            image: collection.image,
+            currency: collection.currency,
+          })
+        }
+      >
         <BlurView
           style={{
             flexDirection: "row",
