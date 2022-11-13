@@ -416,36 +416,41 @@ export interface collectionInterface {
   nfts: nftInterface[];
   category: categoryInterface;
   author: string;
+  image: ImageSourcePropType;
 }
 
 export const collection: collectionInterface[] = [
   {
     id: 1,
     name: "Teaser",
-    nfts: nfts.splice(2, 4),
+    nfts: nfts.slice(0, 5),
     category: categories[0],
     author: "Matt_Sypien",
+    image: nfts[0].image,
   },
   {
     id: 2,
     name: "Teaser 2",
-    nfts: nfts.splice(5, 8),
+    nfts: nfts.slice(5, 10),
     category: categories[1],
     author: "Matt_Sypien",
+    image: nfts[5].image,
   },
   {
     id: 3,
     name: "Teaser 3",
-    nfts: nfts.splice(7, 10),
+    nfts: nfts.slice(10, 15),
     category: categories[2],
     author: "Matt_Sypien",
+    image: nfts[10].image,
   },
   {
     id: 4,
     name: "Teaser 4",
-    nfts: nfts.splice(6, 10),
+    nfts: nfts.slice(15, 20),
     category: categories[3],
     author: "Matt_Sypien",
+    image: nfts[15].image,
   },
 ];
 
